@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কোডিং শেখার টুলস</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .logo i {
+            font-size: 3rem;
+            color: #4ec9b0;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            color: #fff;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #ddd;
+            line-height: 1.6;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .panel {
+            background: rgba(30, 30, 30, 0.85);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            border: 1px solid #444;
+        }
+        
+        .panel-header {
+            background: #252526;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #3c3c3c;
+        }
+        
+        .panel-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #4ec9b0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .panel-title i {
+            font-size: 1.2rem;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 10px 18px;
+            border-radius: 6px;
+            border: none;
+            background: #0078d7;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn:hover {
+            background: #0066b4;
+            transform: translateY(-2px);
+        }
+        
+        .btn-reset {
+            background: #d84315;
+        }
+        
+        .btn-reset:hover {
+            background: #bf360c;
+        }
+        
+        .editor-container {
+            padding: 20px;
+            height: 350px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 100%;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border: 1px solid #3c3c3c;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            resize: none;
+            outline: none;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+        
+        textarea:focus {
+            border-color: #0078d7;
+        }
+        
+        .output-container {
+            padding: 20px;
+            height: 350px;
+            background: white;
+            overflow: auto;
+        }
+        
+        .lessons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .lesson-card {
+            background: rgba(30, 30, 30, 0.85);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid #444;
+        }
+        
+        .lesson-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border-color: #4ec9b0;
+        }
+        
+        .lesson-card h3 {
+            color: #4ec9b0;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .lesson-card ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+            color: #ddd;
+            line-height: 1.8;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .beginner {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+        }
+        
+        .intermediate {
+            background: rgba(241, 196, 15, 0.2);
+            color: #f1c40f;
+        }
+        
+        .advanced {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+        }
+        
+        .progress-container {
+            background: #252526;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: #4ec9b0;
+            width: 60%;
+            border-radius: 4px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: #aaa;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4ec9b0;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #bbb;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .main-content {
+                gap: 15px;
+            }
+            
+            .btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .editor-container, .output-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-laptop-code"></i>
+                <h1>কোডিং শেখার ইন্টারেক্টিভ টুল</h1>
+            </div>
+            <p class="subtitle">এই টুলস ব্যবহার করে আপনি HTML, CSS এবং JavaScript শিখতে পারবেন। সরাসরি কোড লিখুন এবং সাথে সাথে আউটপুট দেখুন। নিচের কোড এডিটরে আপনার কোড লিখুন এবং "রান কোড" বাটনে ক্লিক করুন।</p>
+        </header>
+        <h2> Create SHADOW JOKER 
+        <div class="main-content">
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title"><i class="fas fa-code"></i> কোড এডিটর</h2>
+                    <div class="btn-group">
+                        <button class="btn btn-reset" onclick="resetCode()">
+                            <i class="fas fa-redo"></i> রিসেট
+                        </button>
+                        <button class="btn" onclick="runCode()">
+                            <i class="fas fa-play"></i> রান কোড
+                        </button>
+                    </div>
+                </div>
+                <div class="editor-container">
+                    <textarea id="html-code" placeholder="আপনার HTML কোড এখানে লিখুন...">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;আমার ওয়েবপেজ&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;স্বাগতম!&lt;/h1&gt;
+    &lt;p&gt;এটি আমার প্রথম ওয়েবপেজ।&lt;/p&gt;
+    &lt;div id="output"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title"><i class="fas fa-desktop"></i> লাইভ আউটপুট</h2>
+                </div>
+                <div class="output-container" id="output-frame">
+                    <!-- Output will be rendered here -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value">১২০০+</div>
+                <div class="stat-label">শিক্ষার্থী</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">৫০+</div>
+                <div class="stat-label">লেসন</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">৯৮%</div>
+                <div class="stat-label">সাফল্যের হার</div>
+            </div>
+        </div>
+        
+        <h2 style="text-align: center; margin: 40px 0 25px; color: #4ec9b0;">
+            <i class="fas fa-graduation-cap"></i> শেখার মডিউল
+        </h2>
+        
+        <div class="lessons-container">
+            <div class="lesson-card">
+                <h3><i class="fab fa-html5"></i> HTML বেসিক</h3>
+                <span class="difficulty beginner">শুরু</span>
+                <ul>
+                    <li>HTML স্ট্রাকচার বোঝা</li>
+                    <li>হেডিং, প্যারাগ্রাফ এবং লিঙ্ক</li>
+                    <li>ফর্ম এবং ইনপুট এলিমেন্ট</li>
+                    <li>সেম্যান্টিক এইচটিএমএল</li>
+                </ul>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 30%"></div>
+                </div>
+                <p>প্রোগ্রেস: ৩০% সম্পন্ন</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h3><i class="fab fa-css3-alt"></i> CSS স্টাইলিং</h3>
+                <span class="difficulty intermediate">মধ্যম</span>
+                <ul>
+                    <li>CSS সিলেক্টর</li>
+                    <li>বক্স মডেল এবং পজিশনিং</li>
+                    <li>ফ্লেক্সবক্স এবং গ্রিড</li>
+                    <li>রেসপনসিভ ডিজাইন</li>
+                </ul>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 65%"></div>
+                </div>
+                <p>প্রোগ্রেস: ৬৫% সম্পন্ন</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h3><i class="fab fa-js"></i> জাভাস্ক্রিপ্ট প্রোগ্রামিং</h3>
+                <span class="difficulty advanced">এডভান্সড</span>
+                <ul>
+                    <li>ভেরিয়েবল এবং ডাটা টাইপ</li>
+                    <li>ফাংশন এবং ইভেন্ট</li>
+                    <li>DOM ম্যানিপুলেশন</li>
+                    <li>এজ্যাক্স এবং API</li>
+                </ul>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 20%"></div>
+                </div>
+                <p>প্রোগ্রেস: ২০% সম্পন্ন</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>কোডিং শেখার টুলস &copy; ২০২৫ - সকল অধিকার সংরক্ষিত</p>
+            <p>এই টুলটি তৈরি করা হয়েছে HTML, CSS এবং JavaScript ব্যবহার করে Create SHADOW Joker </p>
+        </footer>
+    </div>
+
+    <script>
+        function runCode() {
+            const htmlCode = document.getElementById('html-code').value;
+            const outputFrame = document.getElementById('output-frame');
+            
+            // Clear previous output
+            outputFrame.innerHTML = '';
+            
+            // Create an iframe to render the HTML
+            const iframe = document.createElement('iframe');
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            outputFrame.appendChild(iframe);
+            
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            
+            // Write the HTML content to the iframe
+            iframeDoc.open();
+            iframeDoc.write(htmlCode);
+            iframeDoc.close();
+            
+            // Show success message
+            showNotification('কোড সফলভাবে রান হয়েছে!', 'success');
+        }
+        
+        function resetCode() {
+            document.getElementById('html-code').value = `<!DOCTYPE html>
+<html>
+<head>
+    <title>আমার ওয়েবপেজ</title>
+</head>
+<body>
+    <h1>স্বাগতম!</h1>
+    <p>এটি আমার প্রথম ওয়েবপেজ।</p>
+    <div id="output"></div>
+</body>
+</html>`;
+            
+            document.getElementById('output-frame').innerHTML = '';
+            showNotification('কোড রিসেট করা হয়েছে!', 'info');
+        }
+        
+        function showNotification(message, type) {
+            // Remove any existing notifications
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+                ${message}
+            `;
+            
+            // Add to body
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateY(0)';
+            }, 10);
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateY(-30px)';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+        
+        // Add initial styles for notification
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .notification {
+                position: fixed;
+                top: 30px;
+                left: 50%;
+                transform: translateX(-50%) translateY(-30px);
+                padding: 15px 25px;
+                border-radius: 8px;
+                color: white;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .notification.success {
+                background: #2ecc71;
+                box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+            }
+            
+            .notification.info {
+                background: #3498db;
+                box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize with default output
+        window.onload = runCode;
+    </script>
+</body>
+</html>
