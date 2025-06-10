@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>কোডিং শেখার টুলস</title>
+    <title>কোডিং শেখার টুলস - Coding আর Banding hobe Shadow joker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,16 +14,19 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             color: #fff;
             min-height: 100vh;
             overflow-x: hidden;
             padding: 20px;
+            position: relative;
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
         header {
@@ -43,6 +46,13 @@
         .logo i {
             font-size: 3rem;
             color: #4ec9b0;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
         
         h1 {
@@ -50,6 +60,10 @@
             margin-bottom: 10px;
             text-shadow: 0 2px 5px rgba(0,0,0,0.3);
             color: #fff;
+            background: linear-gradient(90deg, #4ec9b0, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
         
         .subtitle {
@@ -58,6 +72,10 @@
             margin: 0 auto 30px;
             color: #ddd;
             line-height: 1.6;
+            background: rgba(30, 30, 30, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #4ec9b0;
         }
         
         .main-content {
@@ -79,6 +97,12 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
             overflow: hidden;
             border: 1px solid #444;
+            transition: transform 0.3s ease;
+        }
+        
+        .panel:hover {
+            transform: translateY(-5px);
+            border-color: #4ec9b0;
         }
         
         .panel-header {
@@ -125,6 +149,7 @@
         .btn:hover {
             background: #0066b4;
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
         .btn-reset {
@@ -153,6 +178,7 @@
             resize: none;
             outline: none;
             box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            transition: border-color 0.3s ease;
         }
         
         textarea:focus {
@@ -164,81 +190,209 @@
             height: 350px;
             background: white;
             overflow: auto;
+            color: #333;
         }
         
-        .lessons-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        .lesson-card {
-            background: rgba(30, 30, 30, 0.85);
+        .new-user-guide {
+            background: rgba(30, 30, 30, 0.9);
             border-radius: 12px;
             padding: 25px;
-            transition: all 0.3s ease;
-            border: 1px solid #444;
+            margin: 30px 0;
+            border: 1px solid #4ec9b0;
+            box-shadow: 0 8px 25px rgba(78, 201, 176, 0.2);
         }
         
-        .lesson-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            border-color: #4ec9b0;
-        }
-        
-        .lesson-card h3 {
+        .new-user-guide h2 {
             color: #4ec9b0;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .guide-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .step-card {
+            background: rgba(40, 40, 40, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #444;
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: #4ec9b0;
+            background: rgba(50, 50, 50, 0.9);
+        }
+        
+        .step-number {
+            background: #4ec9b0;
+            color: #1e1e1e;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 15px;
+            font-size: 1.2rem;
         }
         
-        .lesson-card ul {
-            padding-left: 25px;
-            margin-bottom: 20px;
+        .step-card h3 {
+            color: #4ec9b0;
+            margin-bottom: 10px;
+        }
+        
+        .step-card p {
             color: #ddd;
-            line-height: 1.8;
+            font-size: 0.95rem;
         }
         
-        .difficulty {
-            display: inline-block;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
-        .beginner {
-            background: rgba(46, 204, 113, 0.2);
-            color: #2ecc71;
-        }
-        
-        .intermediate {
-            background: rgba(241, 196, 15, 0.2);
-            color: #f1c40f;
-        }
-        
-        .advanced {
-            background: rgba(231, 76, 60, 0.2);
-            color: #e74c3c;
-        }
-        
-        .progress-container {
-            background: #252526;
-            height: 8px;
-            border-radius: 4px;
+        .telegram-promo {
+            background: linear-gradient(135deg, #0088cc, #2aabee);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(42, 171, 238, 0.4);
+            border: none;
+            position: relative;
             overflow: hidden;
-            margin: 15px 0;
         }
         
-        .progress-bar {
-            height: 100%;
-            background: #4ec9b0;
-            width: 60%;
-            border-radius: 4px;
+        .telegram-promo:before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="20" y="50" font-size="16" fill="rgba(255,255,255,0.05)">✈️</text></svg>');
+            opacity: 0.3;
+            transform: rotate(30deg);
+            z-index: 1;
+        }
+        
+        .telegram-promo h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .telegram-promo p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            color: rgba(255,255,255,0.9);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: #0088cc;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            background: #e6f7ff;
+        }
+        
+        .telegram-btn i {
+            font-size: 1.5rem;
+        }
+        
+        .career-path {
+            background: rgba(30, 30, 30, 0.9);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid #4ec9b0;
+        }
+        
+        .career-path h2 {
+            text-align: center;
+            color: #4ec9b0;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        .path-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .path-step {
+            background: rgba(40, 40, 40, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            width: 180px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .path-step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            background: rgba(50, 50, 50, 0.9);
+            border: 1px solid #4ec9b0;
+        }
+        
+        .path-step:after {
+            content: "→";
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4ec9b0;
+            font-size: 2rem;
+        }
+        
+        .path-step:last-child:after {
+            display: none;
+        }
+        
+        .path-step i {
+            font-size: 2.5rem;
+            color: #4ec9b0;
+            margin-bottom: 15px;
+        }
+        
+        .path-step h3 {
+            color: #4ec9b0;
+            margin-bottom: 10px;
+        }
+        
+        .path-step p {
+            color: #ddd;
+            font-size: 0.9rem;
         }
         
         footer {
@@ -290,6 +444,33 @@
             .editor-container, .output-container {
                 height: 300px;
             }
+            
+            .path-step {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .path-step:after {
+                content: "↓";
+                right: 50%;
+                top: auto;
+                bottom: -25px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        
+        /* Animation for shadow joker text */
+        .shadow-joker {
+            display: inline-block;
+            position: relative;
+            animation: joker 4s infinite;
+        }
+        
+        @keyframes joker {
+            0% { text-shadow: 0 0 5px #4ec9b0, 0 0 10px #4ec9b0; }
+            50% { text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
+            100% { text-shadow: 0 0 5px #4ec9b0, 0 0 10px #4ec9b0; }
         }
     </style>
 </head>
@@ -300,9 +481,9 @@
                 <i class="fas fa-laptop-code"></i>
                 <h1>কোডিং শেখার ইন্টারেক্টিভ টুল</h1>
             </div>
-            <p class="subtitle">এই টুলস ব্যবহার করে আপনি HTML, CSS এবং JavaScript শিখতে পারবেন। সরাসরি কোড লিখুন এবং সাথে সাথে আউটপুট দেখুন। নিচের কোড এডিটরে আপনার কোড লিখুন এবং "রান কোড" বাটনে ক্লিক করুন।</p>
+            <p class="subtitle">এই টুলস ব্যবহার করে আপনি HTML, CSS এবং JavaScript শিখতে পারবেন। <span class="shadow-joker">POWER BY CYBER TEAM HELP </span> - এই মন্ত্র মনে রেখে শুরু করুন আপনার কোডিং যাত্রা। সরাসরি কোড লিখুন এবং সাথে সাথে আউটপুট দেখুন।</p>
         </header>
-        <h2> Create SHADOW JOKER 
+        
         <div class="main-content">
             <div class="panel">
                 <div class="panel-header">
@@ -321,10 +502,31 @@
 &lt;html&gt;
 &lt;head&gt;
     &lt;title&gt;আমার ওয়েবপেজ&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f0f8ff;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;h1&gt;স্বাগতম!&lt;/h1&gt;
     &lt;p&gt;এটি আমার প্রথম ওয়েবপেজ।&lt;/p&gt;
+    &lt;div class="card"&gt;
+        &lt;h2&gt;কোডিং শেখা&lt;/h2&gt;
+        &lt;p&gt;HTML, CSS, JavaScript দিয়ে ওয়েব ডেভেলপমেন্ট শিখুন।&lt;/p&gt;
+    &lt;/div&gt;
     &lt;div id="output"&gt;&lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</textarea>
@@ -341,75 +543,94 @@
             </div>
         </div>
         
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-value">১২০০+</div>
-                <div class="stat-label">শিক্ষার্থী</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">৫০+</div>
-                <div class="stat-label">লেসন</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">৯৮%</div>
-                <div class="stat-label">সাফল্যের হার</div>
+        <div class="new-user-guide">
+            <h2><i class="fas fa-map-signs"></i> নতুন ব্যবহারকারীদের গাইডলাইন</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #ddd;">কোডিং শেখার যাত্রা শুরু করার জন্য এই সহজ ধাপগুলো অনুসরণ করুন</p>
+            
+            <div class="guide-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>বেসিক শিখুন</h3>
+                    <p>HTML, CSS, JavaScript এর বেসিক কনসেপ্টগুলো আয়ত্ত করুন</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>প্র্যাকটিস করুন</h3>
+                    <p>নিয়মিত ছোট ছোট প্রজেক্ট বানিয়ে প্র্যাকটিস করুন</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>প্রজেক্ট বানান</h3>
+                    <p>ছোট প্রজেক্ট দিয়ে শুরু করে ধীরে ধীরে বড় প্রজেক্ট নিন</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>কমিউনিটিতে যুক্ত হন</h3>
+                    <p>অন্যান্য কোডারদের সাথে নেটওয়ার্ক তৈরি করুন এবং শেয়ার করুন</p>
+                </div>
             </div>
         </div>
         
-        <h2 style="text-align: center; margin: 40px 0 25px; color: #4ec9b0;">
-            <i class="fas fa-graduation-cap"></i> শেখার মডিউল
-        </h2>
+        <div class="telegram-promo">
+            <h2>আমাদের টেলিগ্রাম কমিউনিটিতে যুক্ত হন!</h2>
+            <p><span class="shadow-joker">Owner SHADOW JOKER ADMINISTRATION CYBER TEAM HELP </span> - এই কমিউনিটিতে আমরা একসাথে কোডিং শিখি, সমস্যা সমাধান করি এবং প্রজেক্ট ডেভেলপ করি।</p>
+            <a href="https://t.me/+DLEo8TQ1PjIzYzFl" class="telegram-btn" target="_blank">
+                <i class="fab fa-telegram-plane"></i> জয়েন করুন এখনই
+            </a>
+        </div>
         
-        <div class="lessons-container">
-            <div class="lesson-card">
-                <h3><i class="fab fa-html5"></i> HTML বেসিক</h3>
-                <span class="difficulty beginner">শুরু</span>
-                <ul>
-                    <li>HTML স্ট্রাকচার বোঝা</li>
-                    <li>হেডিং, প্যারাগ্রাফ এবং লিঙ্ক</li>
-                    <li>ফর্ম এবং ইনপুট এলিমেন্ট</li>
-                    <li>সেম্যান্টিক এইচটিএমএল</li>
-                </ul>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 30%"></div>
-                </div>
-                <p>প্রোগ্রেস: ৩০% সম্পন্ন</p>
-            </div>
+        <div class="career-path">
+            <h2><i class="fas fa-road"></i> কোডিং ক্যারিয়ার পাথ</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #ddd;">কোডিং শিখে আপনি যেসব দিকে ক্যারিয়ার গড়তে পারেন</p>
             
-            <div class="lesson-card">
-                <h3><i class="fab fa-css3-alt"></i> CSS স্টাইলিং</h3>
-                <span class="difficulty intermediate">মধ্যম</span>
-                <ul>
-                    <li>CSS সিলেক্টর</li>
-                    <li>বক্স মডেল এবং পজিশনিং</li>
-                    <li>ফ্লেক্সবক্স এবং গ্রিড</li>
-                    <li>রেসপনসিভ ডিজাইন</li>
-                </ul>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 65%"></div>
+            <div class="path-container">
+                <div class="path-step">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>ফ্রন্টএন্ড ডেভেলপার</h3>
+                    <p>HTML, CSS, JavaScript</p>
                 </div>
-                <p>প্রোগ্রেস: ৬৫% সম্পন্ন</p>
+                
+                <div class="path-step">
+                    <i class="fas fa-server"></i>
+                    <h3>ব্যাকএন্ড ডেভেলপার</h3>
+                    <p>Node.js, Python, PHP</p>
+                </div>
+                
+                <div class="path-step">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>মোবাইল ডেভেলপার</h3>
+                    <p>React Native, Flutter</p>
+                </div>
+                
+                <div class="path-step">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>ডাটা সায়েন্টিস্ট</h3>
+                    <p>Python, R, Machine Learning</p>
+                </div>
             </div>
-            
-            <div class="lesson-card">
-                <h3><i class="fab fa-js"></i> জাভাস্ক্রিপ্ট প্রোগ্রামিং</h3>
-                <span class="difficulty advanced">এডভান্সড</span>
-                <ul>
-                    <li>ভেরিয়েবল এবং ডাটা টাইপ</li>
-                    <li>ফাংশন এবং ইভেন্ট</li>
-                    <li>DOM ম্যানিপুলেশন</li>
-                    <li>এজ্যাক্স এবং API</li>
-                </ul>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 20%"></div>
-                </div>
-                <p>প্রোগ্রেস: ২০% সম্পন্ন</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value">২৫০০+</div>
+                <div class="stat-label">শিক্ষার্থী</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">১০০+</div>
+                <div class="stat-label">টিউটোরিয়াল</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">৯৯%</div>
+                <div class="stat-label">সন্তুষ্টি হার</div>
             </div>
         </div>
         
         <footer>
-            <p>কোডিং শেখার টুলস &copy; ২০২৫ - সকল অধিকার সংরক্ষিত</p>
-            <p>এই টুলটি তৈরি করা হয়েছে HTML, CSS এবং JavaScript ব্যবহার করে Create SHADOW Joker </p>
+            <p>কোডিং শেখার টুলস &copy; ২০২৫ - <span class="shadow-joker">Create SHADOW JOKER  </span></p>
+            <p>এই টুলটি তৈরি করা হয়েছে HTML, CSS এবং JavaScript ব্যবহার করে</p>
         </footer>
     </div>
 
@@ -444,10 +665,31 @@
 <html>
 <head>
     <title>আমার ওয়েবপেজ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f0f8ff;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
     <h1>স্বাগতম!</h1>
     <p>এটি আমার প্রথম ওয়েবপেজ।</p>
+    <div class="card">
+        <h2>কোডিং শেখা</h2>
+        <p>HTML, CSS, JavaScript দিয়ে ওয়েব ডেভেলপমেন্ট শিখুন।</p>
+    </div>
     <div id="output"></div>
 </body>
 </html>`;
@@ -526,4 +768,4 @@
         window.onload = runCode;
     </script>
 </body>
-</html>
+    </html>
